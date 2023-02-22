@@ -1,0 +1,40 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558 
+	// for the documentation about the tasks.json format  "version": "2.0.0""version": "2.0.0"
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "java (build)",
+			"paths": [
+				"${workspace}"
+			],
+			"isFullBuild": true,
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"problemMatcher": [],
+			"label": "java (build): Build Workspace",
+			"detail": "$(tools) Build all the Java projects in workspace."
+		},
+		{
+			"type": "java (buildArtifact)",
+			"mainClass": "com.biriba.AutoTrader",
+			"targetPath": "${workspaceFolder}/target/${workspaceFolderBasename}.jar",
+			"elements": [
+				"${compileOutput}"
+			],
+			"problemMatcher": [],
+			"label": "java (buildArtifact): AutoTrader"
+		},
+		{
+			"label": "Generate Autotrader library",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"dependsOrder": "sequence",
+			"dependsOn": ["java (build): Build Workspace", "java (buildArtifact): AutoTrader"]
+		  }
+	]
+}
