@@ -11,7 +11,7 @@
 			"isFullBuild": true,
 			"group": {
 				"kind": "build",
-				"isDefault": false
+				"isDefault": true
 			},
 			"problemMatcher": [],
 			"label": "java (build): Build Workspace",
@@ -28,13 +28,10 @@
 			"label": "java (buildArtifact): AutoTrader"
 		},
 		{
-			"label": "Generate Autotrader library",
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"dependsOrder": "sequence",
-			"dependsOn": ["java (build): Build Workspace", "java (buildArtifact): AutoTrader"]
-		  }
+			"label": "Generate AutoTrader package",
+			"type": "shell",
+			"command": "rm -R ${workspaceFolder}/package;mkdir -p ${workspaceFolder}/package/lib;cp -r ${workspaceFolder}/lib ${workspaceFolder}/package;find -name '*.java' > classes.log;javac -cp ${workspaceFolder}/lib/commons-jexl3-3.2.1.jar:${workspaceFolder}/lib/commons-logging-1.2.jar -d ${workspaceFolder}/target @classes.log;jar cfm ${workspaceFolder}/package/${workspaceFolderBasename}.jar ${workspaceFolderBasename}.mf -C target ./com;tar -czvf ${workspaceFolderBasename}.tar.gz -C package ${workspaceFolderBasename}.jar lib;mv ${workspaceFolder}/${workspaceFolderBasename}.tar.gz ${workspaceFolder}/package",
+			"detail": "Move the jar file to the library path of Test project."
+		}
 	]
 }
