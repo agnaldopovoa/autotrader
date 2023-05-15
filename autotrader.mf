@@ -1,2 +1,1 @@
-Class-Path: lib/commons-jexl3-3.2.1.jar lib/commons-logging-1.2.jar
-Main-Class: com.biriba.AutoTrader
+Main-Class: com.biriba.autotrader.AutoTrader

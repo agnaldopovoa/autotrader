@@ -1,3 +1,9 @@
+# Maven
+HELP.md
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
 # Compiled class file
 *.class
 
@@ -28,3 +34,5 @@ target/**
 # Keep the external library
 !lib/*.jar
 
+### VS Code ###
+.vscode/
